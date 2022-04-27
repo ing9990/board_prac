@@ -11,10 +11,10 @@
     * **private String title**
     + **private String content**
     + **private String password**    
-    >  `게시글 삭제를 위해 password를 추가`
+      `게시글 삭제를 위해 password를 추가`
   - _**Board Delete Dto**_
     + **private String password**
-    > `게시글을 삭제하기 위해 setting한 password를 받음.`
+     `게시글을 삭제하기 위해 setting한 password를 받음.`
 
 + ### PRIVATE METHOD
    + **private void update_date(Long id)**  <br/>
