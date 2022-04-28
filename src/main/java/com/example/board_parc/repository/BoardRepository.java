@@ -11,9 +11,12 @@ import java.util.List;
  */
 
 @Repository
-public interface BoardRepository extends JpaRepository<Board,Long> {
-    List<Board> findBoardsByLikeGreaterThan(Long n);
-    List<Board> findBoardsByUnlikeLessThan(Long n);
-    List<Board> findBoardsByUnlikeLessThanAndLikeGreaterThan(int n,int m);
+public interface BoardRepository extends JpaRepository<Board, Long> {
+    List<Board> findBoardsByLikeGreaterThan(int n);
 
+    List<Board> findBoardsByUnlikeLessThan(int n);
+
+    List<Board> findBoardsByUnlikeLessThanAndLikeGreaterThan(int n, int m);
+
+    List<Board> findBoardsByUsername(String username);
 }
