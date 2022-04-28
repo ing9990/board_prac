@@ -2,12 +2,12 @@ server:
   port : 8090
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/members
+    url: jdbc:mysql://localhost:3306/board_prac
     username: root
     password: 1111
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
