@@ -19,4 +19,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     List<Board> findBoardsByUnlikeLessThanAndLikeGreaterThan(int n, int m);
 
     List<Board> findBoardsByUsername(String username);
+
 }
