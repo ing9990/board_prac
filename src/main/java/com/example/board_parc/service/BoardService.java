@@ -132,7 +132,7 @@ public class BoardService {
                 }
         );
 
-        log.info("오름차 순으로 정렬한 " + boardRepository.findAll().size() + "개의 게시글을 찾았습니다.");
+        log.info(boardRepository.findAll().size() + "개의 게시글을 찾았습니다.");
         Collections.sort(list, Comparator.comparing(BoardListViewDto::getTitle).reversed());
         return list;
     }
@@ -142,7 +142,7 @@ public class BoardService {
     public Board addBoardLike(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(RuntimeException::new);
         board.setLike(board.getLike() + 1);
-        log.info(board.getTitle() + " 게시글에 좋아요가 " + board.getLike() + "개 입니다.");
+        log.info(board.getTitle() + " 게시글의 좋아요가 " + board.getLike() + "개로 변경되었습니다.");
         update_date(id);
         return boardRepository.save(board);
     }
@@ -151,8 +151,13 @@ public class BoardService {
     @Transactional
     public Board addBoardUnlike(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(RuntimeException::new);
+
+        if(board.getUnlike() >= 5) {
+            log.info("싫어요의 갯수가 최대에 도달했습니다.");
+        }
+
         board.setUnlike(board.getUnlike() + 1);
-        log.info(board.getTitle() + " 게시글에 싫어요가 " + board.getUnlike() + "개 입니다.");
+        log.info(board.getTitle() + " 게시글의 싫어요가 " + board.getUnlike() + "개로 변경되었습니다.");
         update_date(id);
         return boardRepository.save(board);
     }
