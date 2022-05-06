@@ -5,6 +5,7 @@ import com.example.board_parc.dto.*;
 import com.example.board_parc.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,20 @@ public class BoardController {
     public Board findBoardById(@PathVariable Long id){
         return boardService.findBoardById(id);
     }
+
+
+    // Response  Entity를 사용해서 status code와 함께 return
+    @GetMapping("/test/{test_id}")
+    public ResponseEntity<?> findBoardByIdResponseEntity(@PathVariable Long test_id){
+        return boardService.findBoardByIdTest(test_id);
+    }
+
+    @GetMapping("/test2/{test_name}")
+    public ResponseEntity<?> findBoardByNameResponseEntity(@PathVariable String test_name){
+        return boardService.findBoardByNameTest(test_name);
+    }
+
+
 
     @GetMapping("/search/title/{title}")
     public List<Board> findBoardsByTitle(@PathVariable String title){
@@ -62,7 +77,6 @@ public class BoardController {
     public Board addBoard(@RequestBody BoardPostDto boardPostDto){
         return boardService.addBoard(boardPostDto);
     }
-
 
 
     //-----------------------------------------------------------------------------------------------------------
