@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class BoardController {
 
     private final BoardService boardService;
@@ -75,6 +76,7 @@ public class BoardController {
 
     @PostMapping("/write")
     public Board addBoard(@RequestBody BoardPostDto boardPostDto){
+        log.info("접근");
         return boardService.addBoard(boardPostDto);
     }
 
@@ -103,6 +105,7 @@ public class BoardController {
 
     @DeleteMapping("/{id}")
     public void deleteBoard(@PathVariable Long id, @RequestBody BoardDeleteDto boardDeleteDto){
+        log.info("삭제 접근");
         boardService.deleteBoard(id,boardDeleteDto);
     }
 

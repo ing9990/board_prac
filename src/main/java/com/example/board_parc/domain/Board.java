@@ -2,10 +2,8 @@ package com.example.board_parc.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -25,7 +23,7 @@ public class Board {
 
     @NotNull
     @Column(nullable = false, length = 10)
-    private String username;
+    private String username ;
 
     @NotNull
     @Column(nullable = false, length = 100)
